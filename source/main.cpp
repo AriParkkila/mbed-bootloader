@@ -47,6 +47,17 @@ int mbed_bootloader_entrypoint(void)
 int main(void)
 #endif
 {
+    /*DigitalOut led1(LED1);
+    led1 = 1;
+    int i = 0;
+    ThisThread::sleep_for(20000);
+    while(0) {
+        printf("\r\nMbed Bootloader %d\r\n", i++);
+        led1 = 0;
+        ThisThread::sleep_for(2000);
+        led1 = 1;
+        ThisThread::sleep_for(2000);
+    }*/
     // this forces the linker to keep bootloader object now that it's not
     // printed anymore
     *const_cast<volatile uint32_t *>(&bootloader.layout);
@@ -59,7 +70,7 @@ int main(void)
     /* Print bootloader information                                          */
     /*************************************************************************/
 
-    boot_debug("\r\nMbed Bootloader\r\n");
+    boot_debug("\r\nMbed Bootloader for Jak\r\n");
 
 #if MBED_CONF_MBED_TRACE_ENABLE
     mbed_trace_init();
@@ -88,12 +99,18 @@ int main(void)
     }
 
     /* Try to update firmware from journal */
-    if (upgradeApplicationFromStorage()) {
+    if (upgradeApplicationFromStorage() || true) {
         /* deinit storage driver */
         activeStorageDeinit();
 
         /* forward control to ACTIVE application if it is deemed sane */
         boot_debug("booting...\r\n\r\n");
+        /*while(1) {
+            led1 = 0;
+            delay(1000000);
+            led1 = 1;
+            delay(1000000);
+        }*/
         mbed_start_application(MBED_CONF_APP_APPLICATION_JUMP_ADDRESS);
     }
 

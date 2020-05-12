@@ -29,12 +29,12 @@
         },
         "show-serial-output": {
             "help": "Show boot status and progress on serial output. Disable output to save space on headless devices.",
-            "value": 1,
+            "value": 0,
             "macro_name": "SHOW_SERIAL_OUTPUT"
         },
         "show-swo-output": {
             "help": "Show boot status and progress on SWO output instead of serial.",
-            "value": 0,
+            "value": 1,
             "macro_name": "SHOW_SWO_OUTPUT"
         },
         "use-kvstore-rot": {
