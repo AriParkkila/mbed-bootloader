@@ -47,9 +47,9 @@ int mbed_bootloader_entrypoint(void)
 int main(void)
 #endif
 {
-    gpio_t gpio;
+    /*gpio_t gpio;
     gpio_init_out_ex(&gpio, MDMPWRON,  0);
-    gpio_init_out_ex(&gpio, MDMRST,    1);
+    gpio_init_out_ex(&gpio, MDMRST,    1);*/
 
     /*DigitalOut led1(LED1);
     led1 = 1;
